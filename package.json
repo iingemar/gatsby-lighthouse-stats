@@ -10,7 +10,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "audit": "lighthouse https://king.com  --output json --output-path ./src/data/data5.json",
+    "audit": "lighthouse https://king.com  --output json --output html && mv *.report.json src/data && rm *.html",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
