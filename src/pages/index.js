@@ -13,9 +13,13 @@ export default class IndexPage extends Component {
         const labels = map(ligthhouseResults, property('fetchTime'));
         const performance = map(ligthhouseResults, property('categories.performance.score'));
         const pwa = map(ligthhouseResults, property('categories.pwa.score'));
+        const seo = map(ligthhouseResults, property('categories.seo.score'));
+        const accessibility = map(ligthhouseResults, property('categories.accessibility.score'));
 
         this.renderChart('performance', labels, performance);
         this.renderChart('pwa', labels, pwa);
+        this.renderChart('seo', labels, seo);
+        this.renderChart('accessibility', labels, accessibility);
     }
 
     renderChart(elementId, labels, data) {
@@ -55,17 +59,25 @@ export default class IndexPage extends Component {
                           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
                           crossOrigin="anonymous" />
                 </Helmet>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <h2>Performance</h2>
+                <div className="container text-center">
+                    <div className="row mb-4">
+                        <div className="col-sm-6">
+                            <h4>Performance</h4>
                             <canvas id="performance" />
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <h2>Progressive Web App</h2>
+                        <div className="col-sm-6">
+                            <h4>Progressive Web App</h4>
                             <canvas id="pwa" />
+                        </div>
+                    </div>
+                    <div className="row mb-4">
+                        <div className="col-sm-6">
+                            <h4>Accessibility</h4>
+                            <canvas id="accessibility" />
+                        </div>
+                        <div className="col-sm-6">
+                            <h4>SEO</h4>
+                            <canvas id="seo" />
                         </div>
                     </div>
                 </div>
@@ -90,7 +102,14 @@ export const query = graphql`
                             title
                             score
                         }
-                        
+                        seo {
+                            title
+                            score
+                        }
+                        accessibility {
+                            title
+                            score
+                        }                                              
                     }
                 }
             }
