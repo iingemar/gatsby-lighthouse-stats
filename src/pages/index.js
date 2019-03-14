@@ -22,6 +22,13 @@ export default class IndexPage extends Component {
         this.renderChart('accessibility', labels, accessibility);
     }
 
+    randomLightColor() {
+        const r = Math.floor(Math.random() * 55) + 200;
+        const g = Math.floor(Math.random() * 55) + 200;
+        const b = Math.floor(Math.random() * 55) + 200;
+        return "rgb(" + r + "," + g + "," + b + ")";
+    }
+
     renderChart(elementId, labels, data) {
         const ctx = document.getElementById(elementId).getContext('2d');
         new Chart(ctx, {
@@ -30,7 +37,7 @@ export default class IndexPage extends Component {
                 labels: labels,
                 datasets: [{
                     label: elementId,
-                    backgroundColor: 'rgb(255, 99, 132)',
+                    backgroundColor: this.randomLightColor(),
                     borderColor: 'rgb(255, 99, 132)',
                     data: data,
                 }]
@@ -41,6 +48,11 @@ export default class IndexPage extends Component {
                         ticks: {
                             beginAtZero: true,
                             max: 1
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            display: false // Remove the labels in the bottom
                         }
                     }]
                 }
@@ -60,6 +72,11 @@ export default class IndexPage extends Component {
                           crossOrigin="anonymous" />
                 </Helmet>
                 <div className="container text-center">
+                    <div className="row mb-4">
+                        <div className="col-xs-12">
+                            <h1>Google Lighthouse audits</h1>
+                        </div>
+                    </div>
                     <div className="row mb-4">
                         <div className="col-sm-6">
                             <h4>Performance</h4>
