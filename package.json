@@ -10,6 +10,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
+    "audit": "lighthouse https://king.com  --output json --output-path ./src/data/data5.json",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
+    "lighthouse": "^4.2.0",
     "prettier": "^1.16.4"
   },
   "repository": {
